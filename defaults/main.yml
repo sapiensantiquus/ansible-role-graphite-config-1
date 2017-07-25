@@ -1,0 +1,3 @@
+---
+graphite_metric_script_path: /usr/local/sbin/metrics.sh
+graphite_template: metrics.j2.sh

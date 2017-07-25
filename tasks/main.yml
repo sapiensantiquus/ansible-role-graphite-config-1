@@ -1,0 +1,18 @@
+---
+- name: Install nc package for emitting metrics to statsd
+  package:
+    name: nmap-ncat
+    state: present
+
+- name: Template metric script
+  template:
+    src: "{{ graphite_template }}"
+    dest: "{{ graphite_metric_script_path }}"
+
+- name: Add cron line for running metric script every minute
+  cron:
+    name: Graphite metrics
+    minute: "*"
+    job: "{{ graphite_metric_script_path }}"
+    cron_file: graphite_metrics
+    user: root
