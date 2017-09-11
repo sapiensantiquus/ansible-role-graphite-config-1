@@ -9,6 +9,7 @@
     src: "{{ graphite_template }}"
     dest: "{{ graphite_metric_script_path }}"
     mode: "u+xwr"
+    become: "{{ graphite_template_with_become }}"
 
 - name: Add cron line for running metric script every minute
   cron:
